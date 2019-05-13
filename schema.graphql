@@ -1,0 +1,21 @@
+type Transfer @entity {
+  id: ID!
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt! # uint256
+}
+type Burn @entity {
+  id: ID!
+  from: Bytes! # address
+  value: BigInt! # uint256
+}
+type Freeze @entity {
+  id: ID!
+  from: Bytes! # address
+  value: BigInt! # uint256
+}
+type Unfreeze @entity {
+  id: ID!
+  from: Bytes! # address
+  value: BigInt! # uint256
+}

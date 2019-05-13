@@ -1,0 +1,32 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Contract
+    network: mainnet
+    source:
+      address: "0xB8c77482e45F1F44dE1745F52C74426C631bDD52"
+      abi: Contract
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      entities:
+        - Transfer
+        - Burn
+        - Freeze
+        - Unfreeze
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: Transfer(address,address,uint256)
+          handler: handleTransfer
+        - event: Burn(address,uint256)
+          handler: handleBurn
+        - event: Freeze(address,uint256)
+          handler: handleFreeze
+        - event: Unfreeze(address,uint256)
+          handler: handleUnfreeze
+      file: ./src/mapping.ts
